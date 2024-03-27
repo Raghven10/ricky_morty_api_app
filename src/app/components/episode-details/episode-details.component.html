@@ -1,0 +1,29 @@
+<!-- Add this inside your main container but outside the row -->
+
+
+
+<div *ngIf="episode">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>{{ episode.name }}</h2>
+            <p><strong>Air Date:</strong> {{ episode.air_date }}</p>
+            <p><strong>Episode:</strong> {{ episode.episode }}</p>
+            <h3>Characters</h3>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary btn-block" (click)="printPage()">Print</button>
+        </div>
+    </div>
+   
+    <div class="row">
+        <div class="col-md-4" *ngFor="let character of characters" (click)="navigateToCharacter(character.id)">
+          <div class="card" style="width: 18rem; margin-bottom: 20px;">
+            <img class="card-img-top" [src]="character.image" alt="{{ character.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ character.name }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  

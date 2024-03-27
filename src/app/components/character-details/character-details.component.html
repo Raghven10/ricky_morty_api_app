@@ -1,0 +1,17 @@
+<div *ngIf="character" class="container">
+    <h2>{{ character.name }}</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <img [src]="character.image" class="img-fluid" alt="Character Image">
+      </div>
+      <div class="col-md-8">
+        <p><strong>Status:</strong> {{ character.status }}</p>
+        <p><strong>Species:</strong> {{ character.species }}</p>
+        <p><strong>Gender:</strong> {{ character.gender }}</p>
+        <p><strong>Origin:</strong> {{ character.origin?.name }}</p>
+        <p><strong>Last known location:</strong> {{ character.location?.name }}</p>
+       
+      </div>
+    </div>
+  </div>
+  

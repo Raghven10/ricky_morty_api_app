@@ -1,0 +1,58 @@
+<h1 class="text-center">Characters API</h1>
+
+<div class="container mt-3">
+    <div class="row mb-3">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Name" [(ngModel)]="filters.name" (ngModelChange)="applyFilters()">
+      </div>
+      <div class="col">
+        <select class="form-control" [(ngModel)]="filters.status" (ngModelChange)="applyFilters()">
+          <option value="">Status</option>
+          <option value="Alive">Alive</option>
+          <option value="Dead">Dead</option>
+          <option value="unknown">Unknown</option>
+        </select>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Species" [(ngModel)]="filters.species" (ngModelChange)="applyFilters()">
+      </div>
+      <div class="col">
+        <button class="btn btn-secondary" (click)="clearFilters()">Clear Filters</button>
+      </div>
+    </div>
+
+    <!-- Table and other UI elements... -->
+  
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th (click)="sortCharacters('name')">Name
+                <span *ngIf="sortKey === 'name'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+            </th>
+            <th (click)="sortCharacters('status')">Status
+                <span *ngIf="sortKey === 'status'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+            </th>
+            <th (click)="sortCharacters('species')">Species
+                <span *ngIf="sortKey === 'species'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+            </th>
+            <th (click)="sortCharacters('episode')">Episodes
+                <span *ngIf="sortKey === 'episode'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+            </th>
+        </tr>
+      
+    </thead>
+    <tbody>
+        <tr *ngFor="let character of filteredCharacters" (click)="navigateToCharacter(character.id)">
+            <td><img [src]="character?.image" alt="character image" width="50"></td>
+            <td>{{ character.name}}</td>
+            <td>{{ character.status }}</td>
+            <td>{{ character.species }}</td>
+            <td>{{ character.episode.length }}</td>
+          </tr>
+    </tbody>
+    
+  </table>
+
+   
+</div>

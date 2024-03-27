@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@media print {
+    /* Hide everything by default when printing */
+    body * {
+      visibility: hidden;
+    }
+  
+    /* Then, display the episode container and its contents */
+    .episode-detail-container, .episode-detail-container * {
+      visibility: visible;
+    }
+  
+    /* Ensure the episode details take up all the available space */
+    .episode-detail-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  
+    /* Adjust card layout for printing */
+    .card {
+      page-break-inside: avoid;
+      margin-bottom: 20px; /* Add space between cards */
+    }
+  
+    /* Hide the print button */
+    .btn-print {
+      display: none;
+    }
+  }
+
+  @import "~bootstrap/dist/css/bootstrap.css"
